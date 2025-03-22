@@ -666,7 +666,7 @@
                             </div>
                             <div>
                                 <h3 class="text-base font-semibold mb-1">电子邮箱</h3>
-                                <p class="text-zinc-400 text-sm">info@junruixuan.com</p>
+                                <p class="text-zinc-400 text-sm">info@jrxtz.cn</p>
                             </div>
                         </div>
                     </div>
@@ -691,10 +691,10 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="block text-zinc-300 text-sm mb-2" for="subject">主题</label>
+                                <label class="block text-zinc-300 text-sm mb-2" for="phone">联系手机号</label>
                                 <input
                                     class="w-full bg-zinc-800 border border-zinc-700 rounded-sm px-4 py-2 text-white focus:outline-none focus:border-blue-500 transition-colors"
-                                    id="subject" type="text" placeholder="请输入消息主题">
+                                    id="phone" type="text" placeholder="请输入手机号">
                             </div>
 
                             <div class="mb-6">
@@ -713,6 +713,7 @@
                                 </button>
                             </div>
                         </form>
+                        <div id="responseMessage" class="mt-3"></div>
                     </div>
                 </div>
             </div>
@@ -779,15 +780,15 @@
                     <ul class="space-y-3">
                         <li class="flex items-center">
                             <i data-lucide="map-pin" class="w-4 h-4 text-blue-500 mr-2"></i>
-                            <span class="text-zinc-400 text-sm">上海市浦东新区张江高科技园区科苑路88号</span>
+                            <span class="text-zinc-400 text-sm">上海市金山区金山卫镇松金公路327号(金山卫经济小区)</span>
                         </li>
                         <li class="flex items-center">
                             <i data-lucide="phone" class="w-4 h-4 text-blue-500 mr-2"></i>
-                            <span class="text-zinc-400 text-sm">021-12345678</span>
+                            <span class="text-zinc-400 text-sm">+852 97936231</span>
                         </li>
                         <li class="flex items-center">
                             <i data-lucide="mail" class="w-4 h-4 text-blue-500 mr-2"></i>
-                            <span class="text-zinc-400 text-sm">info@junruixuan.com</span>
+                            <span class="text-zinc-400 text-sm">info@jrxtz.cn</span>
                         </li>
                         <li class="flex items-center">
                             <i data-lucide="clock" class="w-4 h-4 text-blue-500 mr-2"></i>
@@ -806,8 +807,179 @@
             </div>
         </div>
     </footer>
+<!-- 引入 FontAwesome 图标库 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<!-- 悬浮按钮 -->
+<button id="chatBtn" class="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center w-14 h-14">
+    <i class="fas fa-robot text-xl"></i> <!-- 机器人图标 -->
+</button>
+<!-- 对话框 -->
+<div id="chatBox" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg p-6 flex flex-col">
+        <!-- 标题栏 -->
+        <div class="flex justify-between items-center">
+            <h3 class="text-lg font-semibold">智能助手</h3>
+            <button id="closeChat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+        </div>
+        <!-- 聊天内容 -->
+        <div id="chatContent" class="flex-1 overflow-y-auto p-4 border rounded my-4 h-64 bg-gray-100"></div>
+        <div id="ai-chat-messages" class="ai-chat-messages">
+        <div class="ai-message">
+            <div class="message-content">
+                <p>您好，我是AI助手，有什么可以帮您解答的问题吗？</p>
+            </div>
+        </div>
+        </div>
+
+        <!-- 输入框 -->
+        <div class="flex">
+            <input id="chatInput" type="text" class="flex-1 p-2 border rounded" placeholder="输入消息...">
+            <button id="sendBtn" class="bg-blue-500 text-white p-2 ml-2 rounded">发送</button>
+        </div>
+    </div>
+</div>
 
     <script src="script.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const chatBtn = document.getElementById('chatBtn');
+    const chatBox = document.getElementById('chatBox');
+    const closeChat = document.getElementById('closeChat');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatInput = document.getElementById('chatInput');
+    const chatContent = document.getElementById('chatContent');
+
+    // 打开聊天框
+    chatBtn.addEventListener('click', function() {
+        chatBox.classList.remove('hidden');
+    });
+
+    // 关闭聊天框
+    closeChat.addEventListener('click', function() {
+        chatBox.classList.add('hidden');
+    });
+
+    // 替换关键词映射
+    const replacements = {
+        "讯飞星火认知大模型": "AI助手",
+        "科大讯飞": "AI公司",
+        "AI": "人工智能"
+    };
+
+    // 关键词替换函数
+    function replaceKeywords(text) {
+        return text.replace(/讯飞星火认知大模型|科大讯飞|AI/g, match => replacements[match]);
+    }
+
+    // **封装消息发送逻辑**
+    function sendMessage() {
+        let message = chatInput.value.trim();
+        if (message === "") return;
+
+        // 用户消息显示
+        chatContent.innerHTML += `<div class="text-right text-blue-600 my-2">你：${message}</div>`;
+        chatInput.value = "";
+
+        // 发送请求
+        fetch('https://api.danny.hk/spark.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                // ✅ 替换关键词
+                let modifiedMessage = replaceKeywords(data.message);
+
+                // 显示助手回复
+                chatContent.innerHTML += `<div class="text-left text-gray-700 my-2">助手：${modifiedMessage}</div>`;
+            }
+        })
+        .catch(err => {
+            chatContent.innerHTML += `<div class="text-left text-red-500 my-2">错误：无法连接服务器</div>`;
+        });
+    }
+
+    // ✅ 点击按钮发送消息
+    sendBtn.addEventListener('click', sendMessage);
+
+    // ✅ 按 Enter 发送消息
+    chatInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // 防止回车换行
+            sendMessage();
+        }
+    });
+});
+</script>
+
+<!-- 引入 Leaflet.js 库 -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    // 创建地图并设置初始视图位置和缩放级别
+    var map = L.map('map').setView([30.6517, 104.0658], 15); // 成都的经纬度
+
+    // 添加 OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // 设置标记（Pin）位置
+    L.marker([30.6517, 104.0658]).addTo(map)
+        .bindPopup('四川省成都市武侯区高攀路26号-1')
+        .openPopup();
+</script>
+    <script src="script.js"></script>
+    <!-- 远程 JavaScript 文件 -->
+    <script>
+        // 监听表单提交
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // 阻止默认表单提交
+
+            // 获取表单数据
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var message = document.getElementById('message').value;
+
+            // 检查是否所有字段都填写了
+            if (!name || !email || !phone || !message) {
+                document.getElementById('responseMessage').innerHTML = '<p class="text-red-600">请填写所有字段。</p>';
+                return;
+            }
+
+            // 在这里可以添加表单提交的逻辑，如通过 Ajax 发送数据到服务器
+            // 示例：向后台发送数据（假设使用 Fetch API）
+            fetch('https://api.danny.hk/send-email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // 根据返回结果显示响应消息
+                    if (data.success) {
+                        document.getElementById('responseMessage').innerHTML = '<p class="text-green-600">消息已发送成功！</p>';
+                        document.getElementById('contactForm').reset(); // 清空表单
+                    } else {
+                        document.getElementById('responseMessage').innerHTML = '<p class="text-red-600">发送消息失败，请稍后再试。</p>';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('responseMessage').innerHTML = '<p class="text-red-600">发生错误，请稍后再试。</p>';
+                });
+        });
+    </script>
 </body>
 
 </html>
