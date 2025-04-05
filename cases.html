@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成功案例 - 上海骏瑞轩企业管理有限公司</title>
+
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
+    <link rel="preload" href="https://unpkg.com/lucide@2.0.0/dist/lucide.min.js" as="script">
+
+    <!-- 内联关键CSS -->
+    <style>
+        /* 精简版Tailwind核心样式 */
+        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+        /* 字体优化 */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            @apply bg-black text-white overflow-x-hidden;
+        }
+
+        /* 首屏关键动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* 案例卡片悬停效果 */
+        .case-card {
+            transition: transform 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 筛选按钮样式 */
+        .filter-btn.active {
+            @apply bg-blue-600 text-white;
+        }
+    </style>
+
+    <!-- 异步加载非关键CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        media="print" onload="this.media='all'">
+</head>
+
+<body class="bg-black text-white font-sans overflow-x-hidden">
+    <div id="particles-container" class="fixed w-full h-full top-0 left-0 z-0"></div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/70 border-b border-zinc-800/50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span
+                    class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">骏瑞轩</span>
+                <div class="h-4 w-px bg-zinc-700"></div>
+                <span class="text-xs font-geist-mono tracking-widest text-zinc-400">JUNRUIXUAN</span>
+            </div>
+            <nav class="hidden lg:flex">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="text-zinc-400 hover:text-white transition-all text-sm">首页</a></li>
+                    <li><a href="index.html#about"
+                            class="text-zinc-400 hover:text-white transition-all text-sm">关于我们</a></li>
+                    <li><a href="index.html#business"
+                            class="text-zinc-400 hover:text-white transition-all text-sm">业务板块</a></li>
+                    <li class="relative group">
+                        <a href="#" class="text-zinc-400 hover:text-white transition-all text-sm flex items-center">
+                            技术方向 <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </a>
+                        <div
+                            class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 rounded-sm shadow-lg hidden group-hover:block z-50">
+                            <a href="ai.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">AI研发</a>
+                            <a href="cloud.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">云计算</a>
+                            <a href="blockchain.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">区块链</a>
+                            <a href="bigdata.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">大数据</a>
+                        </div>
+                    </li>
+                    <li><a href="investment.html" class="text-zinc-400 hover:text-white transition-all text-sm">投资业务</a>
+                    </li>
+                    <li><a href="cases.html" class="text-white hover:text-blue-400 transition-all text-sm">成功案例</a></li>
+                    <li><a href="index.html#news" class="text-zinc-400 hover:text-white transition-all text-sm">新闻资讯</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="text-zinc-400 hover:text-white transition-all text-sm">联系我们</a></li>
+                </ul>
+            </nav>
+            <div class="lg:hidden">
+                <button id="mobile-menu-button" class="text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-black/90 backdrop-blur-md border-t border-zinc-800/50">
+            <ul class="flex flex-col items-center py-4">
+                <li class="py-2"><a href="index.html" class="text-zinc-400 hover:text-white">首页</a></li>
+                <li class="py-2"><a href="index.html#about" class="text-zinc-400 hover:text-white">关于我们</a></li>
+                <li class="py-2"><a href="index.html#business" class="text-zinc-400 hover:text-white">业务板块</a></li>
+                <li class="py-2"><a href="ai.html" class="text-zinc-400 hover:text-white">AI研发</a></li>
+                <li class="py-2"><a href="cloud.html" class="text-zinc-400 hover:text-white">云计算</a></li>
+                <li class="py-2"><a href="blockchain.html" class="text-zinc-400 hover:text-white">区块链</a></li>
+                <li class="py-2"><a href="bigdata.html" class="text-zinc-400 hover:text-white">大数据</a></li>
+                <li class="py-2"><a href="investment.html" class="text-zinc-400 hover:text-white">投资业务</a></li>
+                <li class="py-2"><a href="cases.html" class="text-white">成功案例</a></li>
+                <li class="py-2"><a href="index.html#news" class="text-zinc-400 hover:text-white">新闻资讯</a></li>
+                <li class="py-2"><a href="index.html#contact" class="text-zinc-400 hover:text-white">联系我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-black/50"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10">
+            <div class="max-w-3xl">
+                <span class="text-blue-500 font-geist-mono text-sm tracking-wider">成功案例</span>
+                <h1 class="text-4xl md:text-5xl font-bold my-4 hero-title">
+                    <span class="block">创新科技</span>
+                    <span
+                        class="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">成功实践</span>
+                </h1>
+                <p class="text-lg text-zinc-300 max-w-2xl mb-10">
+                    骏瑞轩与多家知名企业建立了长期合作关系，助力企业数字化转型与智能化升级
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-10 bg-zinc-900/50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active px-6 py-2 border border-zinc-700 rounded-sm text-sm transition-all"
+                    data-filter="all">
+                    全部案例
+                </button>
+                <button class="filter-btn px-6 py-2 border border-zinc-700 rounded-sm text-sm transition-all"
+                    data-filter="ai">
+                    AI应用
+                </button>
+                <button class="filter-btn px-6 py-2 border border-zinc-700 rounded-sm text-sm transition-all"
+                    data-filter="iot">
+                    物联网
+                </button>
+                <button class="filter-btn px-6 py-2 border border-zinc-700 rounded-sm text-sm transition-all"
+                    data-filter="cloud">
+                    云计算
+                </button>
+                <button class="filter-btn px-6 py-2 border border-zinc-700 rounded-sm text-sm transition-all"
+                    data-filter="blockchain">
+                    区块链
+                </button>
+                <button class="filter-btn px-6 py-2 border border-zinc-700 rounded-sm text-sm transition-all"
+                    data-filter="investment">
+                    投资案例
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Grid Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cases-grid">
+                <!-- Case 1 - 智能制造 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="iot">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425367-Create.webp"
+                            alt="智能制造案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            智能制造
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">智能制造升级项目</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某制造企业提供物联网解决方案，实现设备互联互通，实时数据采集与分析，生产效率提升30%。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2023年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 - 智慧医疗 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="ai">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425475-Create.webp"
+                            alt="智慧医疗案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            智慧医疗
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">智慧医疗解决方案</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某大型医院提供智慧医疗解决方案，实现患者预约挂号、在线咨询、智能导诊等功能，患者就诊效率提升40%。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2023年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 - 新能源 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="investment">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584424042-Create.webp"
+                            alt="新能源案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            新能源
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">新能源汽车电池技术投资</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            对某新能源汽车电池技术企业进行股权投资，提供资金支持和战略咨询，助力其技术研发和市场拓展。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2022年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 4 - 智慧城市 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="ai">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425655-Create.webp"
+                            alt="智慧城市案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            智慧城市
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">智慧城市安防系统</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某城市提供智慧城市安防系统，实现城市监控智能化、警力资源优化配置、犯罪预警智能化等功能。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2022年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 5 - 金融科技 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="blockchain">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584427692-Create.webp"
+                            alt="金融科技案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            金融科技
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">区块链金融服务平台</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某金融机构开发区块链金融服务平台，实现资产数字化、交易透明化、结算自动化，大幅提升业务效率。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2023年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 6 - 云计算 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="cloud">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584421239-Create.webp"
+                            alt="云计算案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            云计算
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">企业云迁移解决方案</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某大型企业提供云迁移解决方案，实现IT基础设施云化，降低运维成本40%，提升系统可靠性和安全性。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2022年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 7 - 智能零售 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="ai">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425789-Create.webp"
+                            alt="智能零售案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            智能零售
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">智能零售解决方案</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某零售连锁企业提供智能零售解决方案，实现商品智能识别、无人收银、客流分析等功能，提升购物体验。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2023年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 8 - 智能家居 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="iot">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425367-Create.webp"
+                            alt="智能家居案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            智能家居
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">智能家居控制系统</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某房地产开发商提供智能家居控制系统，实现照明、空调、安防等设备的智能控制，提升居住体验。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2022年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 9 - 生物科技 -->
+                <div class="case-card border border-zinc-800 rounded-sm overflow-hidden" data-category="investment">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425475-Create.webp"
+                            alt="生物科技案例" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-geist-mono px-3 py-1">
+                            生物科技
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">生物医药研发投资</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            对某生物医药研发企业进行股权投资，支持其创新药物研发，目前已有多个药物进入临床试验阶段。
+                        </p>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2021年度项目</span>
+                            </div>
+                            <a href="case-detail.html"
+                                class="text-blue-400 text-sm flex items-center hover:text-blue-300 transition-colors">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-zinc-900/50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-blue-500 font-geist-mono text-sm tracking-wider">客户评价</span>
+                <h2 class="text-3xl md:text-4xl font-bold my-4">合作伙伴的声音</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-zinc-300 max-w-3xl mx-auto">
+                    听听我们的合作伙伴对骏瑞轩的评价，他们的成功是我们最好的见证
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="text-4xl text-blue-400">"</div>
+                    </div>
+                    <p class="text-zinc-300 mb-6 italic">
+                        骏瑞轩团队的专业素养和技术实力给我们留下了深刻印象。他们提供的智能制造解决方案帮助我们实现了生产效率的大幅提升，是值得信赖的合作伙伴。
+                    </p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            Z
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">张总</h4>
+                            <p class="text-zinc-400 text-sm">某制造业企业 CEO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="text-4xl text-blue-400">"</div>
+                    </div>
+                    <p class="text-zinc-300 mb-6 italic">
+                        骏瑞轩在AI技术应用方面的专业能力令人印象深刻。他们为我们医院开发的智慧医疗系统大大提高了医疗服务效率，患者满意度显著提升。
+                    </p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            L
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">李院长</h4>
+                            <p class="text-zinc-400 text-sm">某三甲医院 院长</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-sm">
+                    <div class="flex items-center mb-6">
+                        <div class="text-4xl text-blue-400">"</div>
+                    </div>
+                    <p class="text-zinc-300 mb-6 italic">
+                        作为一家初创企业，我们很幸运能得到骏瑞轩的投资和支持。他们不仅提供了资金，更重要的是提供了宝贵的行业资源和战略指导，帮助我们快速成长。
+                    </p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                            W
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">王创始人</h4>
+                            <p class="text-zinc-400 text-sm">某科技创业公司 创始人</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div
+                class="bg-gradient-to-r from-blue-900/30 to-purple-900/30 border border-blue-800/30 rounded-sm p-12 text-center">
+                <h2 class="text-3xl font-bold mb-6">寻找适合您企业的创新解决方案</h2>
+                <p class="text-zinc-300 max-w-2xl mx-auto mb-8">
+                    无论您是寻求技术创新、数字化转型还是投资合作，骏瑞轩都能为您提供专业的解决方案
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="investment.html"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-sm transition-all">
+                        了解投资业务
+                    </a>
+                    <a href="index.html#contact"
+                        class="border border-zinc-600 hover:border-blue-500 text-white hover:text-blue-400 px-8 py-3 rounded-sm transition-all">
+                        联系我们
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 border-t border-zinc-800/50 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">骏瑞轩</span>
+                        <div class="h-4 w-px bg-zinc-700"></div>
+                        <span class="text-xs font-geist-mono tracking-widest text-zinc-400">JUNRUIXUAN</span>
+                    </div>
+                    <p class="text-zinc-400 text-sm max-w-md mb-6">
+                        上海骏瑞轩企业管理有限公司，专注于科技创新与投资管理的融合，致力于推动产业变革与升级。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-zinc-500 hover:text-white transition-all">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-zinc-500 hover:text-white transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-zinc-500 hover:text-white transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-zinc-500 hover:text-white transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-white font-semibold mb-4">快速链接</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-zinc-400 hover:text-white text-sm">首页</a></li>
+                            <li><a href="index.html#about" class="text-zinc-400 hover:text-white text-sm">关于我们</a></li>
+                            <li><a href="index.html#business" class="text-zinc-400 hover:text-white text-sm">业务板块</a>
+                            </li>
+                            <li><a href="investment.html" class="text-zinc-400 hover:text-white text-sm">投资业务</a></li>
+                            <li><a href="cases.html" class="text-zinc-400 hover:text-white text-sm">成功案例</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold mb-4">技术方向</h3>
+                        <ul class="space-y-2">
+                            <li><a href="ai.html" class="text-zinc-400 hover:text-white text-sm">AI研发</a></li>
+                            <li><a href="cloud.html" class="text-zinc-400 hover:text-white text-sm">云计算</a></li>
+                            <li><a href="blockchain.html" class="text-zinc-400 hover:text-white text-sm">区块链</a></li>
+                            <li><a href="bigdata.html" class="text-zinc-400 hover:text-white text-sm">大数据</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold mb-4">联系我们</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-zinc-400 text-sm">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-zinc-500"></i>
+                                上海市金山区金山卫镇松金公路327号
+                            </li>
+                            <li class="flex items-center text-zinc-400 text-sm">
+                                <i data-lucide="phone" class="w-4 h-4 mr-2 text-zinc-500"></i>
+                                021-67226696
+                            </li>
+                            <li class="flex items-center text-zinc-400 text-sm">
+                                <i data-lucide="mail" class="w-4 h-4 mr-2 text-zinc-500"></i>
+                                info@junruixuan.com
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-zinc-500 text-sm mb-4 md:mb-0">© 2023 上海骏瑞轩企业管理有限公司. 保留所有权利.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm">隐私政策</a>
+                    <a href="#" class="text-zinc-500 hover:text-white text-sm">使用条款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 聊天助手 -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chatBtn" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg">
+            <i data-lucide="message-square-text" class="w-6 h-6"></i>
+        </button>
+        <div id="chatBox" class="hidden absolute bottom-20 right-0 w-80 bg-white rounded-md shadow-xl overflow-hidden">
+            <div class="bg-blue-600 text-white p-4 flex justify-between items-center">
+                <h3 class="font-semibold">在线咨询</h3>
+                <button id="closeChat" class="text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="chatContent" class="p-4 h-80 overflow-y-auto bg-gray-50"></div>
+            <div class="p-4 border-t border-gray-200 flex">
+                <input id="chatInput" type="text" placeholder="请输入您的问题..."
+                    class="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:border-blue-500">
+                <button id="sendBtn"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-md flex items-center">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 移动端菜单控制 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+
+    <!-- 聊天功能 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatBtn = document.getElementById('chatBtn');
+            const chatBox = document.getElementById('chatBox');
+            const closeChat = document.getElementById('closeChat');
+            const sendBtn = document.getElementById('sendBtn');
+            const chatInput = document.getElementById('chatInput');
+            const chatContent = document.getElementById('chatContent');
+
+            if (chatBtn && chatBox && closeChat && sendBtn && chatInput && chatContent) {
+                // 打开聊天框
+                chatBtn.addEventListener('click', function () {
+                    chatBox.classList.remove('hidden');
+                });
+
+                // 关闭聊天框
+                closeChat.addEventListener('click', function () {
+                    chatBox.classList.add('hidden');
+                });
+
+                // 替换关键词映射
+                const replacements = {
+                    "讯飞星火认知大模型": "AI助手",
+                    "科大讯飞": "AI公司",
+                    "AI": "人工智能"
+                };
+
+                // 关键词替换函数
+                function replaceKeywords(text) {
+                    return text.replace(/讯飞星火认知大模型|科大讯飞|AI/g, match => replacements[match]);
+                }
+
+                // 封装消息发送逻辑
+                function sendMessage() {
+                    let message = chatInput.value.trim();
+                    if (message === "") return;
+
+                    // 用户消息显示
+                    chatContent.innerHTML += `<div class="text-right text-blue-600 my-2">你：${message}</div>`;
+                    chatInput.value = "";
+
+                    // 发送请求
+                    fetch('https://api.danny.hk/spark.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message) {
+                                // 替换关键词
+                                let modifiedMessage = replaceKeywords(data.message);
+
+                                // 显示助手回复
+                                chatContent.innerHTML += `<div class="text-left text-gray-700 my-2">助手：${modifiedMessage}</div>`;
+                            }
+                        })
+                        .catch(err => {
+                            chatContent.innerHTML += `<div class="text-left text-red-500 my-2">错误：无法连接服务器</div>`;
+                        });
+                }
+
+                // 点击按钮发送消息
+                sendBtn.addEventListener('click', sendMessage);
+
+                // 按 Enter 发送消息
+                chatInput.addEventListener('keypress', function (event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault(); // 防止回车换行
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- 案例筛选功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const caseCards = document.querySelectorAll('.case-card');
+
+            // 添加筛选按钮点击事件
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // 移除所有按钮的active类
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // 为当前点击的按钮添加active类
+                    this.classList.add('active');
+
+                    // 获取筛选类别
+                    const filter = this.getAttribute('data-filter');
+
+                    // 筛选案例卡片
+                    caseCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            // 添加淡入动画
+                            card.style.opacity = '0';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transition = 'opacity 0.5s ease';
+                            }, 50);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <!-- 粒子效果 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-container', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#0369a1' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#0369a1',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out'
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'grab' },
+                        onclick: { enable: true, mode: 'push' },
+                        resize: true
+                    },
+                    modes: {
+                        grab: { distance: 140, line_linked: { opacity: 1 } },
+                        push: { particles_nb: 4 }
+                    }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
+
+    <!-- 图标初始化 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                lucide.createIcons();
+            } catch (e) {
+                console.log('Lucide图标初始化失败，使用备选图标');
+                document.querySelectorAll('[data-lucide]').forEach(function (el) {
+                    const iconName = el.getAttribute('data-lucide');
+                    const className = el.className;
+
+                    // 映射Lucide图标名称到Font Awesome
+                    const iconMap = {
+                        'chip': 'fa-microchip',
+                        'code': 'fa-code',
+                        'database': 'fa-database',
+                        'message-square-text': 'fa-comment-alt',
+                        'eye': 'fa-eye',
+                        'mic': 'fa-microphone',
+                        'trending-up': 'fa-chart-line',
+                        'map-pin': 'fa-map-marker-alt',
+                        'phone': 'fa-phone',
+                        'mail': 'fa-envelope',
+                        'calendar': 'fa-calendar',
+                        'arrow-right': 'fa-arrow-right',
+                        'external-link': 'fa-external-link-alt',
+                        'send': 'fa-paper-plane',
+                        'clock': 'fa-clock',
+                        'check-circle': 'fa-check-circle',
+                        'chevron-down': 'fa-chevron-down',
+                        'menu': 'fa-bars',
+                        'linkedin': 'fa-linkedin',
+                        'twitter': 'fa-twitter',
+                        'facebook': 'fa-facebook',
+                        'instagram': 'fa-instagram',
+                        'brain-circuit': 'fa-brain',
+                        'zap': 'fa-bolt',
+                        'flask-conical': 'fa-flask',
+                        'factory': 'fa-industry',
+                        'x': 'fa-times'
+                    };
+
+                    // 创建新的Font Awesome图标元素
+                    const newIcon = document.createElement('i');
+                    newIcon.className = className + ' fas ' + (iconMap[iconName] || 'fa-question');
+
+                    // 替换原始元素
+                    el.parentNode.replaceChild(newIcon, el);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -47,6 +47,15 @@
         .hero-title {
             animation: fadeIn 0.8s ease-out;
         }
+
+        /* 确保子菜单正常显示 */
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1 !important;
+        }
+
+        .group:hover .group-hover\:visible {
+            visibility: visible !important;
+        }
     </style>
 
     <!-- 异步加载非关键CSS -->
@@ -76,7 +85,7 @@
                             技术方向 <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
                         </a>
                         <div
-                            class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 rounded-sm shadow-lg hidden group-hover:block z-50">
+                            class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 rounded-sm shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                             <a href="ai.html"
                                 class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">AI研发</a>
                             <a href="cloud.html"
@@ -1173,6 +1182,26 @@
                         e.preventDefault();
                         techDropdownMenu.classList.toggle('hidden');
                     }
+                });
+            }
+        });
+    </script>
+    <!-- 在页面底部添加以下脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const techMenuTrigger = document.querySelector('.group > a');
+            const techSubmenu = document.querySelector('.group > div');
+
+            if (techMenuTrigger && techSubmenu) {
+                techMenuTrigger.addEventListener('mouseenter', function () {
+                    techSubmenu.style.opacity = '1';
+                    techSubmenu.style.visibility = 'visible';
+                });
+
+                const groupElement = document.querySelector('.group');
+                groupElement.addEventListener('mouseleave', function () {
+                    techSubmenu.style.opacity = '0';
+                    techSubmenu.style.visibility = 'hidden';
                 });
             }
         });
