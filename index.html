@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>上海骏瑞轩企业管理有限公司 - 科技创新 · 卓越投资</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/lucide-icons@0.256.0/dist/umd/lucide.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.256.0/dist/umd/lucide.min.js"></script>
+    <!-- 修复Lucide图标 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 引入Font Awesome作为备选图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -29,12 +31,28 @@
             </div>
             <nav class="hidden lg:flex">
                 <ul class="flex space-x-8">
-                    <li><a href="#home" class="text-white hover:text-blue-400 transition-all text-sm">首页</a></li>
+                    <li><a href="index.html" class="text-white hover:text-blue-400 transition-all text-sm">首页</a></li>
                     <li><a href="#about" class="text-zinc-400 hover:text-white transition-all text-sm">关于我们</a></li>
                     <li><a href="#business" class="text-zinc-400 hover:text-white transition-all text-sm">业务板块</a></li>
-                    <li><a href="#tech" class="text-zinc-400 hover:text-white transition-all text-sm">科技创新</a></li>
-                    <li><a href="#ai" class="text-zinc-400 hover:text-white transition-all text-sm">AI研发</a></li>
-                    <li><a href="#cases" class="text-zinc-400 hover:text-white transition-all text-sm">成功案例</a></li>
+                    <li class="relative group">
+                        <a href="#" class="text-zinc-400 hover:text-white transition-all text-sm flex items-center">
+                            技术方向 <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </a>
+                        <div
+                            class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 rounded-sm shadow-lg hidden group-hover:block z-50">
+                            <a href="ai.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">AI研发</a>
+                            <a href="cloud.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">云计算</a>
+                            <a href="blockchain.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">区块链</a>
+                            <a href="bigdata.html"
+                                class="block px-4 py-2 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800">大数据</a>
+                        </div>
+                    </li>
+                    <li><a href="investment.html" class="text-zinc-400 hover:text-white transition-all text-sm">投资业务</a>
+                    </li>
+                    <li><a href="cases.html" class="text-zinc-400 hover:text-white transition-all text-sm">成功案例</a></li>
                     <li><a href="#news" class="text-zinc-400 hover:text-white transition-all text-sm">新闻资讯</a></li>
                     <li><a href="#contact" class="text-zinc-400 hover:text-white transition-all text-sm">联系我们</a></li>
                 </ul>
@@ -48,12 +66,15 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-black/90 backdrop-blur-md border-t border-zinc-800/50">
             <ul class="flex flex-col items-center py-4">
-                <li class="py-2"><a href="#home" class="text-white">首页</a></li>
+                <li class="py-2"><a href="index.html" class="text-white">首页</a></li>
                 <li class="py-2"><a href="#about" class="text-zinc-400 hover:text-white">关于我们</a></li>
                 <li class="py-2"><a href="#business" class="text-zinc-400 hover:text-white">业务板块</a></li>
-                <li class="py-2"><a href="#tech" class="text-zinc-400 hover:text-white">科技创新</a></li>
-                <li class="py-2"><a href="#ai" class="text-zinc-400 hover:text-white">AI研发</a></li>
-                <li class="py-2"><a href="#cases" class="text-zinc-400 hover:text-white">成功案例</a></li>
+                <li class="py-2"><a href="ai.html" class="text-zinc-400 hover:text-white">AI研发</a></li>
+                <li class="py-2"><a href="cloud.html" class="text-zinc-400 hover:text-white">云计算</a></li>
+                <li class="py-2"><a href="blockchain.html" class="text-zinc-400 hover:text-white">区块链</a></li>
+                <li class="py-2"><a href="bigdata.html" class="text-zinc-400 hover:text-white">大数据</a></li>
+                <li class="py-2"><a href="investment.html" class="text-zinc-400 hover:text-white">投资业务</a></li>
+                <li class="py-2"><a href="cases.html" class="text-zinc-400 hover:text-white">成功案例</a></li>
                 <li class="py-2"><a href="#news" class="text-zinc-400 hover:text-white">新闻资讯</a></li>
                 <li class="py-2"><a href="#contact" class="text-zinc-400 hover:text-white">联系我们</a></li>
             </ul>
@@ -675,7 +696,7 @@
                 <div class="md:w-1/2">
                     <div class="bg-zinc-900 border border-zinc-800 rounded-sm p-8">
                         <h3 class="text-xl font-bold mb-6">发送消息</h3>
-                        <form>
+                        <form id="contactForm">
                             <div class="mb-4">
                                 <label class="block text-zinc-300 text-sm mb-2" for="name">您的姓名</label>
                                 <input
@@ -715,6 +736,7 @@
                         </form>
                         <div id="responseMessage" class="mt-3"></div>
                     </div>
+                    <div id="map" class="h-64 mt-6 rounded-sm border border-zinc-800"></div>
                 </div>
             </div>
         </div>
@@ -807,131 +829,226 @@
             </div>
         </div>
     </footer>
-<!-- 引入 FontAwesome 图标库 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- 引入 FontAwesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<!-- 悬浮按钮 -->
-<button id="chatBtn" class="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center w-14 h-14">
-    <i class="fas fa-robot text-xl"></i> <!-- 机器人图标 -->
-</button>
-<!-- 对话框 -->
-<div id="chatBox" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg p-6 flex flex-col">
-        <!-- 标题栏 -->
-        <div class="flex justify-between items-center">
-            <h3 class="text-lg font-semibold">智能助手</h3>
-            <button id="closeChat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
-        </div>
-        <!-- 聊天内容 -->
-        <div id="chatContent" class="flex-1 overflow-y-auto p-4 border rounded my-4 h-64 bg-gray-100"></div>
-        <div id="ai-chat-messages" class="ai-chat-messages">
-        <div class="ai-message">
-            <div class="message-content">
-                <p>您好，我是AI助手，有什么可以帮您解答的问题吗？</p>
+    <!-- 悬浮按钮 -->
+    <button id="chatBtn"
+        class="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center w-14 h-14">
+        <i class="fas fa-robot text-xl"></i> <!-- 机器人图标 -->
+    </button>
+    <!-- 对话框 -->
+    <div id="chatBox" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg p-6 flex flex-col">
+            <!-- 标题栏 -->
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold">智能助手</h3>
+                <button id="closeChat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+            </div>
+            <!-- 聊天内容 -->
+            <div id="chatContent" class="flex-1 overflow-y-auto p-4 border rounded my-4 h-64 bg-gray-100"></div>
+            <div id="ai-chat-messages" class="ai-chat-messages">
+                <div class="ai-message">
+                    <div class="message-content">
+                        <p>您好，我是AI助手，有什么可以帮您解答的问题吗？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 输入框 -->
+            <div class="flex">
+                <input id="chatInput" type="text" class="flex-1 p-2 border rounded" placeholder="输入消息...">
+                <button id="sendBtn" class="bg-blue-500 text-white p-2 ml-2 rounded">发送</button>
             </div>
         </div>
-        </div>
-
-        <!-- 输入框 -->
-        <div class="flex">
-            <input id="chatInput" type="text" class="flex-1 p-2 border rounded" placeholder="输入消息...">
-            <button id="sendBtn" class="bg-blue-500 text-white p-2 ml-2 rounded">发送</button>
-        </div>
     </div>
-</div>
-
-    <script src="script.js"></script>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const chatBtn = document.getElementById('chatBtn');
-    const chatBox = document.getElementById('chatBox');
-    const closeChat = document.getElementById('closeChat');
-    const sendBtn = document.getElementById('sendBtn');
-    const chatInput = document.getElementById('chatInput');
-    const chatContent = document.getElementById('chatContent');
-
-    // 打开聊天框
-    chatBtn.addEventListener('click', function() {
-        chatBox.classList.remove('hidden');
-    });
-
-    // 关闭聊天框
-    closeChat.addEventListener('click', function() {
-        chatBox.classList.add('hidden');
-    });
-
-    // 替换关键词映射
-    const replacements = {
-        "讯飞星火认知大模型": "AI助手",
-        "科大讯飞": "AI公司",
-        "AI": "人工智能"
-    };
-
-    // 关键词替换函数
-    function replaceKeywords(text) {
-        return text.replace(/讯飞星火认知大模型|科大讯飞|AI/g, match => replacements[match]);
-    }
-
-    // **封装消息发送逻辑**
-    function sendMessage() {
-        let message = chatInput.value.trim();
-        if (message === "") return;
-
-        // 用户消息显示
-        chatContent.innerHTML += `<div class="text-right text-blue-600 my-2">你：${message}</div>`;
-        chatInput.value = "";
-
-        // 发送请求
-        fetch('https://api.danny.hk/spark.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                // ✅ 替换关键词
-                let modifiedMessage = replaceKeywords(data.message);
-
-                // 显示助手回复
-                chatContent.innerHTML += `<div class="text-left text-gray-700 my-2">助手：${modifiedMessage}</div>`;
-            }
-        })
-        .catch(err => {
-            chatContent.innerHTML += `<div class="text-left text-red-500 my-2">错误：无法连接服务器</div>`;
+        // 初始化粒子效果
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-container', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#0369a1' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#0369a1',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out'
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'grab' },
+                        onclick: { enable: true, mode: 'push' },
+                        resize: true
+                    },
+                    modes: {
+                        grab: { distance: 140, line_linked: { opacity: 1 } },
+                        push: { particles_nb: 4 }
+                    }
+                },
+                retina_detect: true
+            });
         });
-    }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatBtn = document.getElementById('chatBtn');
+            const chatBox = document.getElementById('chatBox');
+            const closeChat = document.getElementById('closeChat');
+            const sendBtn = document.getElementById('sendBtn');
+            const chatInput = document.getElementById('chatInput');
+            const chatContent = document.getElementById('chatContent');
 
-    // ✅ 点击按钮发送消息
-    sendBtn.addEventListener('click', sendMessage);
+            if (chatBtn && chatBox && closeChat && sendBtn && chatInput && chatContent) {
+                // 打开聊天框
+                chatBtn.addEventListener('click', function () {
+                    chatBox.classList.remove('hidden');
+                });
 
-    // ✅ 按 Enter 发送消息
-    chatInput.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // 防止回车换行
-            sendMessage();
-        }
-    });
-});
-</script>
+                // 关闭聊天框
+                closeChat.addEventListener('click', function () {
+                    chatBox.classList.add('hidden');
+                });
 
-<!-- 引入 Leaflet.js 库 -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                // 替换关键词映射
+                const replacements = {
+                    "讯飞星火认知大模型": "企业助手",
+                    "科大讯飞": "骏瑞轩公司",
+                    "AI": "轩"
+                };
 
-<script>
-    // 创建地图并设置初始视图位置和缩放级别
-    var map = L.map('map').setView([30.6517, 104.0658], 15); // 成都的经纬度
+                // 关键词替换函数
+                function replaceKeywords(text) {
+                    return text.replace(/讯飞星火认知大模型|科大讯飞|AI/g, match => replacements[match]);
+                }
 
-    // 添加 OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+                // **封装消息发送逻辑**
+                function sendMessage() {
+                    let message = chatInput.value.trim();
+                    if (message === "") return;
 
-    // 设置标记（Pin）位置
-    L.marker([30.6517, 104.0658]).addTo(map)
-        .bindPopup('四川省成都市武侯区高攀路26号-1')
-        .openPopup();
-</script>
+                    // 用户消息显示
+                    chatContent.innerHTML += `<div class="text-right text-blue-600 my-2">你：${message}</div>`;
+                    chatInput.value = "";
+
+                    // 发送请求
+                    fetch('https://api.danny.hk/spark.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message) {
+                                // ✅ 替换关键词
+                                let modifiedMessage = replaceKeywords(data.message);
+
+                                // 显示助手回复
+                                chatContent.innerHTML += `<div class="text-left text-gray-700 my-2">助手：${modifiedMessage}</div>`;
+                            }
+                        })
+                        .catch(err => {
+                            chatContent.innerHTML += `<div class="text-left text-red-500 my-2">错误：无法连接服务器</div>`;
+                        });
+                }
+
+                // ✅ 点击按钮发送消息
+                sendBtn.addEventListener('click', sendMessage);
+
+                // ✅ 按 Enter 发送消息
+                chatInput.addEventListener('keypress', function (event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault(); // 防止回车换行
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- 引入 Leaflet.js 库 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mapContainer = document.getElementById('map');
+            if (mapContainer) {
+
+                var map = L.map('map').setView([31.0461, 121.2336], 15);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                L.marker([31.0461, 121.2336]).addTo(map).bindPopup('上海市金山区金山卫镇松金公路327号(金山卫经济小区)').openPopup();
+            }
+        });
+    </script>
+    <script>
+        // 初始化图标
+        document.addEventListener('DOMContentLoaded', function () {
+            // 尝试初始化Lucide图标
+            try {
+                lucide.createIcons();
+            } catch (e) {
+                console.log('Lucide图标初始化失败，使用备选图标');
+                // 替换为Font Awesome图标
+                document.querySelectorAll('[data-lucide]').forEach(function (el) {
+                    const iconName = el.getAttribute('data-lucide');
+                    const className = el.className;
+
+                    // 映射Lucide图标名称到Font Awesome
+                    const iconMap = {
+                        'chip': 'fa-microchip',
+                        'code': 'fa-code',
+                        'database': 'fa-database',
+                        'message-square-text': 'fa-comment-alt',
+                        'eye': 'fa-eye',
+                        'mic': 'fa-microphone',
+                        'trending-up': 'fa-chart-line',
+                        'map-pin': 'fa-map-marker-alt',
+                        'phone': 'fa-phone',
+                        'mail': 'fa-envelope',
+                        'calendar': 'fa-calendar',
+                        'arrow-right': 'fa-arrow-right',
+                        'external-link': 'fa-external-link-alt',
+                        'send': 'fa-paper-plane',
+                        'clock': 'fa-clock',
+                        'check-circle': 'fa-check-circle',
+                        'chevron-down': 'fa-chevron-down',
+                        'menu': 'fa-bars',
+                        'linkedin': 'fa-linkedin',
+                        'twitter': 'fa-twitter',
+                        'facebook': 'fa-facebook',
+                        'instagram': 'fa-instagram'
+                    };
+
+                    // 创建新的Font Awesome图标元素
+                    const newIcon = document.createElement('i');
+                    newIcon.className = className + ' fas ' + (iconMap[iconName] || 'fa-question');
+
+                    // 替换原始元素
+                    el.parentNode.replaceChild(newIcon, el);
+                });
+            }
+        });
+    </script>
+    <!-- 引入 FontAwesome 图标库 -->
     <script src="script.js"></script>
     <!-- 远程 JavaScript 文件 -->
     <script>
@@ -978,6 +1095,45 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(error => {
                     document.getElementById('responseMessage').innerHTML = '<p class="text-red-600">发生错误，请稍后再试。</p>';
                 });
+        });
+    </script>
+    <script>
+        // 移动端菜单控制
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // 主菜单切换
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // 技术方向子菜单切换
+            const mobileServicesButton = document.getElementById('mobile-services-button');
+            const mobileServicesMenu = document.getElementById('mobile-services-menu');
+
+            if (mobileServicesButton && mobileServicesMenu) {
+                mobileServicesButton.addEventListener('click', function (e) {
+                    e.preventDefault(); // 阻止链接默认行为
+                    mobileServicesMenu.classList.toggle('hidden');
+                });
+            }
+
+            // 桌面版技术方向菜单
+            const techDropdownButton = document.querySelector('nav ul li.group > a');
+            const techDropdownMenu = document.querySelector('nav ul li.group > div');
+
+            if (techDropdownButton && techDropdownMenu) {
+                // 点击时切换显示（在移动设备上可能需要）
+                techDropdownButton.addEventListener('click', function (e) {
+                    if (window.innerWidth < 1024) { // lg断点
+                        e.preventDefault();
+                        techDropdownMenu.classList.toggle('hidden');
+                    }
+                });
+            }
         });
     </script>
 </body>

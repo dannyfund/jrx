@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>区块链技术 - 上海骏瑞轩企业管理有限公司</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/lucide-icons@0.256.0/dist/umd/lucide.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.256.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-black text-white font-sans overflow-x-hidden">
+    <div id="particles-container" class="fixed w-full h-full top-0 left-0 z-0"></div>
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/70 border-b border-zinc-800/50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-xl font-bold">骏瑞轩</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-8">
+                        <a href="index.html" class="text-zinc-300 hover:text-white transition-colors text-sm">首页</a>
+                        <div class="relative group">
+                            <button class="text-zinc-300 hover:text-white transition-colors text-sm flex items-center">
+                                技术服务
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                            </button>
+                            <div
+                                class="absolute left-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 rounded-sm shadow-lg hidden group-hover:block">
+                                <a href="ai.html"
+                                    class="block px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white">AI研发</a>
+                                <a href="bigdata.html"
+                                    class="block px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white">大数据技术</a>
+                                <a href="blockchain.html"
+                                    class="block px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white bg-zinc-800 text-white">区块链技术</a>
+                                <a href="cloud.html"
+                                    class="block px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white">云计算服务</a>
+                            </div>
+                        </div>
+                        <a href="#" class="text-zinc-300 hover:text-white transition-colors text-sm">解决方案</a>
+                        <a href="#" class="text-zinc-300 hover:text-white transition-colors text-sm">成功案例</a>
+                        <a href="#" class="text-zinc-300 hover:text-white transition-colors text-sm">关于我们</a>
+                        <a href="#" class="text-zinc-300 hover:text-white transition-colors text-sm">联系我们</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="text-zinc-300 hover:text-white" id="mobile-menu-button">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden bg-zinc-900 border-t border-zinc-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">首页</a>
+                <div class="relative">
+                    <button
+                        class="w-full text-left px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm flex items-center justify-between"
+                        id="mobile-services-button">
+                        技术服务
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                    <div class="hidden pl-4 space-y-1" id="mobile-services-menu">
+                        <a href="ai.html"
+                            class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">AI研发</a>
+                        <a href="bigdata.html"
+                            class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">大数据技术</a>
+                        <a href="blockchain.html"
+                            class="block px-3 py-2 text-zinc-300 bg-zinc-800 text-white rounded-sm">区块链技术</a>
+                        <a href="cloud.html"
+                            class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">云计算服务</a>
+                    </div>
+                </div>
+                <a href="#" class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">解决方案</a>
+                <a href="#" class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">成功案例</a>
+                <a href="#" class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">关于我们</a>
+                <a href="#" class="block px-3 py-2 text-zinc-300 hover:bg-zinc-800 hover:text-white rounded-sm">联系我们</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-black/50"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <span class="text-blue-500 font-geist-mono text-sm tracking-wider">区块链技术</span>
+                    <h1 class="text-3xl md:text-5xl font-bold my-4">分布式信任的未来</h1>
+                    <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mb-6"></div>
+                    <p class="text-zinc-300 mb-6 leading-relaxed">
+                        骏瑞轩区块链技术中心专注于区块链底层技术研发与行业应用开发，为企业提供安全、高效、可信的区块链解决方案。
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="#blockchain-solutions"
+                            class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-sm transition-all text-sm flex items-center">
+                            区块链方案
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                        <a href="#blockchain-cases"
+                            class="px-6 py-3 bg-transparent border border-zinc-700 hover:border-zinc-500 text-white rounded-sm transition-all text-sm flex items-center">
+                            成功案例
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425789-Create.webp"
+                        alt="区块链技术" class="w-full rounded-sm shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Core Technologies -->
+    <section class="py-20 bg-zinc-900/50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-blue-500 font-geist-mono text-sm tracking-wider">核心技术</span>
+                <h2 class="text-3xl md:text-4xl font-bold my-4">区块链技术能力</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-zinc-300 max-w-3xl mx-auto">
+                    骏瑞轩区块链技术中心拥有自主研发的区块链底层技术和应用开发框架，为企业提供全栈区块链解决方案
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tech 1 -->
+                <div class="bg-zinc-800/50 p-8 rounded-sm border border-zinc-700 hover:border-blue-500 transition-all">
+                    <div class="bg-blue-600/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="link" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">分布式账本技术</h3>
+                    <p class="text-zinc-400 mb-4">
+                        自主研发的高性能分布式账本技术，支持多种共识算法，具有高吞吐量、低延迟特性，适用于企业级应用场景。
+                    </p>
+                    <ul class="space-y-2 mt-4">
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            多共识算法支持
+                        </li>
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            高性能交易处理
+                        </li>
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            可扩展架构设计
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tech 2 -->
+                <div class="bg-zinc-800/50 p-8 rounded-sm border border-zinc-700 hover:border-blue-500 transition-all">
+                    <div class="bg-blue-600/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="file-code" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">智能合约平台</h3>
+                    <p class="text-zinc-400 mb-4">
+                        企业级智能合约开发与执行平台，支持多种编程语言，提供丰富的合约模板库和开发工具，简化区块链应用开发。
+                    </p>
+                    <ul class="space-y-2 mt-4">
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            多语言合约支持
+                        </li>
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            合约安全审计工具
+                        </li>
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            业务模板库
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tech 3 -->
+                <div class="bg-zinc-800/50 p-8 rounded-sm border border-zinc-700 hover:border-blue-500 transition-all">
+                    <div class="bg-blue-600/20 rounded-full p-4 w-16 h-16 flex items-center justify-center mb-6">
+                        <i data-lucide="shield" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">区块链安全框架</h3>
+                    <p class="text-zinc-400 mb-4">
+                        全方位的区块链安全解决方案，包括密码学算法、权限管理、隐私保护等技术，保障区块链系统的安全可靠运行。
+                    </p>
+                    <ul class="space-y-2 mt-4">
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            国密算法支持
+                        </li>
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            零知识证明技术
+                        </li>
+                        <li class="flex items-center text-zinc-300 text-sm">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                            多层次权限控制
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Solutions -->
+    <section id="blockchain-solutions" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-blue-500 font-geist-mono text-sm tracking-wider">解决方案</span>
+                <h2 class="text-3xl md:text-4xl font-bold my-4">行业区块链应用</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-zinc-300 max-w-3xl mx-auto">
+                    骏瑞轩区块链技术中心针对不同行业特点，提供定制化的区块链解决方案
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Solution 1 -->
+                <div class="flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+                    <div class="md:w-2/5">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584424042-Create.webp"
+                            alt="金融区块链" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="bg-blue-600/20 rounded-full p-2 w-10 h-10 flex items-center justify-center mr-3">
+                                <i data-lucide="landmark" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">金融区块链解决方案</h3>
+                        </div>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            面向金融机构的区块链解决方案，实现跨机构清算结算、供应链金融、数字资产交易等业务场景的去中心化改造。
+                        </p>
+                        <ul class="space-y-2 mt-4">
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                跨机构清算网络
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                供应链金融平台
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                数字资产交易系统
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="inline-flex items-center mt-6 text-blue-400 text-sm hover:text-blue-300 transition-colors">
+                            了解详情
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+                    <div class="md:w-2/5">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425367-Create.webp"
+                            alt="供应链区块链" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="bg-blue-600/20 rounded-full p-2 w-10 h-10 flex items-center justify-center mr-3">
+                                <i data-lucide="truck" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">供应链区块链解决方案</h3>
+                        </div>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            基于区块链技术的供应链协同平台，实现产品溯源、供应链金融、多方协作等业务场景的透明化与可信化。
+                        </p>
+                        <ul class="space-y-2 mt-4">
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                产品全生命周期溯源
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                多方协作与共享账本
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                智能合约自动执行
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="inline-flex items-center mt-6 text-blue-400 text-sm hover:text-blue-300 transition-colors">
+                            了解详情
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <!-- Solution 3 -->
+                <div class="flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+                    <div class="md:w-2/5">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425475-Create.webp"
+                            alt="医疗区块链" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="bg-blue-600/20 rounded-full p-2 w-10 h-10 flex items-center justify-center mr-3">
+                                <i data-lucide="stethoscope" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">医疗健康区块链解决方案</h3>
+                        </div>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            面向医疗健康行业的区块链解决方案，实现医疗数据安全共享、电子病历管理、药品溯源等业务场景的可信化改造。
+                        </p>
+                        <ul class="space-y-2 mt-4">
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                医疗数据安全共享
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                电子病历区块链管理
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                药品全流程溯源
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="inline-flex items-center mt-6 text-blue-400 text-sm hover:text-blue-300 transition-colors">
+                            了解详情
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Solution 4 -->
+                <div class="flex flex-col md:flex-row bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden">
+                    <div class="md:w-2/5">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425655-Create.webp"
+                            alt="政务区块链" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6">
+                        <div class="flex items-center mb-4">
+                            <div
+                                class="bg-blue-600/20 rounded-full p-2 w-10 h-10 flex items-center justify-center mr-3">
+                                <i data-lucide="building" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">政务区块链解决方案</h3>
+                        </div>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            面向政府部门的区块链解决方案，实现政务数据共享、电子证照、公共服务等业务场景的可信化与高效化。
+                        </p>
+                        <ul class="space-y-2 mt-4">
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                跨部门数据共享
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                电子证照区块链平台
+                            </li>
+                            <li class="flex items-center text-zinc-300 text-sm">
+                                <i data-lucide="check" class="w-4 h-4 mr-2 text-blue-500"></i>
+                                智慧政务服务系统
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="inline-flex items-center mt-6 text-blue-400 text-sm hover:text-blue-300 transition-colors">
+                            了解详情
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Cases -->
+    <section id="blockchain-cases" class="py-20 bg-zinc-900/50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-blue-500 font-geist-mono text-sm tracking-wider">成功案例</span>
+                <h2 class="text-3xl md:text-4xl font-bold my-4">区块链应用实践</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-zinc-300 max-w-3xl mx-auto">
+                    骏瑞轩区块链技术在多个行业的成功落地案例，为企业创造实际价值
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Case 1 -->
+                <div
+                    class="bg-zinc-800/50 border border-zinc-700 rounded-sm overflow-hidden hover:border-blue-500 transition-all">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584424042-Create.webp"
+                            alt="金融区块链案例" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs px-3 py-1">
+                            金融区块链
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">某银行联盟链平台建设</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某银行集团构建联盟链平台，实现跨分行、跨机构的业务协同与数据共享，大幅提升业务处理效率，降低运营成本。
+                        </p>
+                        <div class="flex items-center justify-between mt-4">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2023年度项目</span>
+                            </div>
+                            <a href="#" class="text-blue-400 text-sm flex items-center hover:text-blue-300">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div
+                    class="bg-zinc-800/50 border border-zinc-700 rounded-sm overflow-hidden hover:border-blue-500 transition-all">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425367-Create.webp"
+                            alt="供应链区块链案例" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs px-3 py-1">
+                            供应链区块链
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">某大型制造企业供应链溯源平台</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某大型制造企业构建基于区块链的供应链溯源平台，实现原材料采购、生产制造、物流配送、销售服务全流程可追溯。
+                        </p>
+                        <div class="flex items-center justify-between mt-4">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2022年度项目</span>
+                            </div>
+                            <a href="#" class="text-blue-400 text-sm flex items-center hover:text-blue-300">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div
+                    class="bg-zinc-800/50 border border-zinc-700 rounded-sm overflow-hidden hover:border-blue-500 transition-all">
+                    <div class="relative">
+                        <img src="https://r2.flowith.net/files/28e62786-f414-490d-8f21-da7ea6e2028a/1741584425475-Create.webp"
+                            alt="医疗区块链案例" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs px-3 py-1">
+                            医疗区块链
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">某医疗集团电子病历共享平台</h3>
+                        <p class="text-zinc-400 text-sm mb-4">
+                            为某医疗集团构建基于区块链的电子病历共享平台，实现患者数据在保障隐私的前提下安全共享，提升诊疗效率与质量。
+                        </p>
+                        <div class="flex items-center justify-between mt-4">
+                            <div class="flex items-center text-zinc-500 text-xs">
+                                <i data-lucide="calendar" class="w-3 h-3 mr-1"></i>
+                                <span>2023年度项目</span>
+                            </div>
+                            <a href="#" class="text-blue-400 text-sm flex items-center hover:text-blue-300">
+                                查看详情
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 border-t border-zinc-800 py-12">
+        <div class="container mx-auto px-4">
+            <!-- 页脚内容 -->
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 移动端菜单控制
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileServicesButton = document.getElementById('mobile-services-button');
+            const mobileServicesMenu = document.getElementById('mobile-services-menu');
+
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileServicesButton.addEventListener('click', function () {
+                mobileServicesMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
